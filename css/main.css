@@ -1,0 +1,99 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,900);
+
+/** Reset **/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #8f8f8f;
+}
+
+/* General */
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    background: #FFF;
+}
+
+/** Header **/
+.header__section--advertising {
+    padding-top: 5px;
+    text-align: center;
+}
+
+/** Nav **/
+.nav {
+    background: #dddddd;
+}
+
+.nav__list {
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.nav__list__item {
+    display: inline;
+    line-height: 70px;
+    margin-left: 15px;
+}
+
+.nav__list__item__link {
+    font-weight: 500;
+    font-size: 1.2em;
+    color: #606060;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/** Rows **/
+.row {
+    margin-bottom: 15px;
+}
+
+.row-item.first {
+    float: left;
+    margin-right: 5px;
+}
+
+.row-item:not(.first) .small {
+    margin-left: 768px;
+}
+
+.row-item:not(.first) .big {
+    margin-left: 261px;
+}
+
+.row-item-article .title {
+    height: 50px;
+    display: block;
+    line-height: 50px;
+    background-color:rgba(0, 0, 0, 0.1);
+}
+
+.row-item-article .title h1,
+.row-item-article .title h2,
+.row-item-article .title h3,
+.row-item-article .title h4 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 10px;
+}
+
+/** Etc **/
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}

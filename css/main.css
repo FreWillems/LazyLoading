@@ -40,13 +40,13 @@ body {
 
 .nav__list__item {
     display: inline;
-    line-height: 70px;
+    line-height: 50px;
     margin-left: 15px;
 }
 
 .nav__list__item__link {
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #606060;
     text-decoration: none;
     text-transform: uppercase;
@@ -97,3 +97,29 @@ body {
 .cf:after {
     clear: both;
 }
+
+
+/** Fade In **/
+.fadein {
+	opacity:0;
+	-webkit-animation: fadein ease-in 1;
+	-moz-animation: fadein ease-in 1;
+	-o-animation: fadein ease-in 1;
+	animation: fadein ease-in 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.fadein-1s {
+	-webkit-animation-duration: 2500ms;
+	-moz-animation-duration: 2500ms;
+	-o-animation-duration: 2500ms;
+	animation-duration: 2500ms;
+}
+
+@-webkit-keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@-moz-keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@-o-keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }

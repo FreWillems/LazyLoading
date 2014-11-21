@@ -4,7 +4,17 @@
 
     function _init() {
 
-        //setTimeout(_startLoading, 1000);
+        if (window.location.hash && window.location.hash.toLowerCase() === '#lazy-off') {
+
+            console.log('Lazy is off!')
+        }
+        else {
+
+
+            _preventLoading();
+            window.addEventListener('scroll', _startLoading);
+            window.addEventListener('resize', _startLoading);
+        }
     }
 
     function _startLoading() {
@@ -18,6 +28,7 @@
 
                 console.log('Loaded image: ' + lazyElements[i].getAttribute('data-src'));
 
+                lazyElements[i].onload = _onImageLoad(lazyElements[i]);
                 lazyElements[i].setAttribute('src', lazyElements[i].getAttribute('data-src'));
                 lazyElements[i].removeAttribute('data-src')
             }
@@ -34,9 +45,15 @@
             if (!_isVisible(lazyElements[i])) {
 
                 lazyElements[i].setAttribute('data-src', lazyElements[i].getAttribute('src'));
-                lazyElements[i].removeAttribute('src')
+                //lazyElements[i].setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+                lazyElements[i].setAttribute('src', 'img/transparent.gif');
             }
         }
+    }
+
+    function _onImageLoad(element) {
+
+        element.className = 'fadein fadein-1s';
     }
 
     function _isVisible(element) {
@@ -49,13 +66,11 @@
             top += element.offsetTop;
         }
 
-        top -= 300;
+        top -= 800;
 
         return (top < (window.pageYOffset + window.innerHeight) && (top + height) <= (window.pageYOffset + window.innerHeight));
     }
 
-    window.addEventListener('load', _init);
-    window.addEventListener('DOMContentLoaded', _preventLoading);
-    window.addEventListener('scroll', _startLoading);
+    window.addEventListener('DOMContentLoaded', _init);
 
 })();

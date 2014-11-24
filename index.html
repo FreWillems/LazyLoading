@@ -5,300 +5,163 @@
         <title></title>
         <link href="css/normalize.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/reqwest/1.1.5/reqwest.min.js"></script>
         <script src="js/lazy.js"></script>
     </head>
     <body>
         <div class="container">
             <header class="header">
                 <div class="header__section--advertising">
-                    <img src="http://fpoimg.com/1024x90?text=Ad" alt="Leaderboard">
+                    <img src="http://fpoimg.com/728x90?text=Ad" alt="Leaderboard">
                 </div>
                 <div class="header__section--primary">
                     <nav class="nav">
                         <ul class="nav__list">
                             <li class="nav__list__item">
-                                <a href="#" class="nav__list__item__link">Home</a>
+                                <a href="index.html" class="nav__list__item__link">Home</a>
                             </li>
                             <li class="nav__list__item">
-                                <a href="#" class="nav__list__item__link">Link</a>
+                                <a href="index.html?1#nolazy" class="nav__list__item__link">Turn off Lazy</a>
                             </li>
                             <li class="nav__list__item">
-                                <a href="#" class="nav__list__item__link">Other Link</a>
+                                <a href="#" id="lazy-switch" class="nav__list__item__link green red">Lazy is off!</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </header>
-            <div class="main" data-lazy="true">
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?7578578578587" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?857857857857" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?2524278527" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?7857578578" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="main" data-lazy="true" data-lazy-elements="picture,video">
+                <div class="row">
+                     <div class="row-item first big">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_1.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_1_mobile.jpg" alt="Artikel 1">
+                        </picture>
+                        <noscript>
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="img/articles/article_1.jpg">
+                                <img src="img/articles/article_1_mobile.jpg" alt="Artikel 1">
+                            </picture>
+                        </noscript>
+                     </div>
+                     <div class="row-item small">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_3.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_3_mobile.jpg" height="300" alt="Artikel 3">
+                        </picture>
+                        <noscript>
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="img/articles/article_3.jpg">
+                                <img src="img/articles/article_3_mobile.jpg" height="300" alt="Artikel 3">
+                            </picture>
+                        </noscript>
+                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?788585" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?828287723" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?78941534212" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?223131485" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+                     <div class="row-item small first">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_4.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_4_mobile.jpg" height="300" alt="Artikel 4">
+                        </picture>
+                        <noscript>
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="img/articles/article_4.jpg">
+                                <img src="img/transparent.gif" src="img/articles/article_4_mobile.jpg" height="300" alt="Artikel 4">
+                            </picture>
+                        </noscript>
+                     </div>
+                     <div class="row-item big">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_5.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_5_mobile.jpg" height="300" alt="Artikel 5">
+                        </picture>
+                        <noscript>
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="img/articles/article_5.jpg">
+                                <img src="img/transparent.gif" src="img/articles/article_5_mobile.jpg" height="300" alt="Artikel 5">
+                            </picture>
+                        </noscript>
+                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?123385878" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?7894455654123" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?1005313051" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?00456456406" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+                     <div class="row-item big first">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_6.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_6_mobile.jpg" height="300" alt="Artikel 6">
+                        </picture>
+                     </div>
+                     <div class="row-item small">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_7.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_7_mobile.jpg" height="300" alt="Artikel 7">
+                        </picture>
+                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?012477245" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?0789748645" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?4861534865" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?7897941513" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+                     <div class="row-item small first">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_3.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_3_mobile.jpg" height="300" alt="Artikel 3">
+                        </picture>
+                     </div>
+                     <div class="row-item big">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_2.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_2_mobile.jpg" height="300" alt="Artikel 2">
+                        </picture>
+                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?12313589786" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?02112257458" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?89415415310" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?3322564546" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+                     <div class="row-item big first">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_8.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_8_mobile.jpg" height="300" alt="Artikel 8">
+                        </picture>
+                     </div>
+                     <div class="row-item small">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_9.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_9_mobile.jpg" height="300" alt="Artikel 9">
+                        </picture>
+                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?252727" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?272782782" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?894178272785415310" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?7827827827827" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+                     <div class="row-item small first">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_10.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_10_mobile.jpg" height="300" alt="Artikel 10">
+                        </picture>
+                     </div>
+                     <div class="row-item big">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_11.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_11_mobile.jpg" height="300" alt="Artikel 11">
+                        </picture>
+                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?7856786786" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?8878578" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?2827786642" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?278578888" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+                     <div class="row-item big first video">
+                        <video class="fjs-hidden" controls>
+                            <source data-src="video/video.mp4" type="video/mp4">
+                        </video>
+                        <noscript>
+                            <video controls autoplay>
+                                <source src="video/video_mobile.mp4" type="video/mp4">
+                            </video>
+                        </noscript>
+                     </div>
+                     <div class="row-item small">
+                        <picture class="fjs-hidden">
+                            <source media="(min-width: 1024px)" srcset="img/transparent.gif" data-srcset="img/articles/article_12.jpg">
+                            <img src="img/transparent.gif" data-src="img/articles/article_12_mobile.jpg" height="300" alt="Artikel 12">
+                        </picture>
+                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?785678676" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?678678678" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?28277885785756642" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?27888578888" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?78567886578686786" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?8878875785578" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row-item first cf">
-                            <div class="row-item-article small">
-                                <img src="http://lorempixel.com/256/300/?282773385186642" width="256" height="300" alt="Breaking image">
-                                <span class="title"><h2>Ebola</h2></span>
-                            </div>
-                        </div>
-                        <div class="row-item">
-                            <div class="row-item-article big">
-                                <img src="http://lorempixel.com/763/300/people/?271448578888" width="763" height="300" alt="Breaking image">
-                                <span class="title"><h1>De jurk die de Arabische wereld op stelten zette</h1></span>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="lazy-content" data-lazy="true" data-lazy-elements="div">
+                <h2>Lazy Load Content</h2>
+                <div id="lazy-content" data-src="list.html">
+                    <a href="list.html">Klik hier</a>
                 </div>
             </div>
         </div>

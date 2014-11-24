@@ -2,58 +2,137 @@
 
     'use strict';
 
+    var initial = true,
+        ignoreIsVisible = false,
+        mapper = {
+            picture: _processPicture,
+            video: _processVideo,
+            img: _processImg,
+            div: _processDiv
+        };
+
     function _init() {
 
-        if (window.location.hash && window.location.hash.toLowerCase() === '#lazy-off') {
+        if (window.location.hash && window.location.hash.toLowerCase() === '#nolazy') {
 
-            console.log('Lazy is off!')
+            console.log('Lazy is off! Loading everything..');
+            ignoreIsVisible = true;
         }
-        else {
 
+        document.querySelector('#lazy-switch').classList.remove('red');
+        document.querySelector('#lazy-switch').innerHTML = 'Lazy is on!';
 
-            _preventLoading();
-            window.addEventListener('scroll', _startLoading);
-            window.addEventListener('resize', _startLoading);
-        }
+        _findElements();
+
+        window.addEventListener('scroll', _findElements);
+        window.addEventListener('resize', _findElements);
     }
 
-    function _startLoading() {
+    function _findElements() {
 
-        var lazyElements = document.querySelectorAll('[data-lazy] img[data-src]');
-        var i;
+        var elements = document.querySelectorAll('[data-lazy="true"]'), i, validElements = [];
 
-        for (i = 0; i < lazyElements.length; i++) {
+        for (i = 0; i < elements.length; i++) {
 
-            if (_isVisible(lazyElements[i])) {
+            validElements.push(elements[i].querySelectorAll(elements[i].getAttribute('data-lazy-elements')));
+        }
 
-                console.log('Loaded image: ' + lazyElements[i].getAttribute('data-src'));
+        _processElements(validElements);
 
-                lazyElements[i].onload = _onImageLoad(lazyElements[i]);
-                lazyElements[i].setAttribute('src', lazyElements[i].getAttribute('data-src'));
-                lazyElements[i].removeAttribute('data-src')
+        initial = false;
+    }
+
+    function _processElements(elements) {
+
+        var i, n;
+
+        for (i = 0; i < elements.length; i++) {
+
+            for (n = 0; n < elements[i].length; n++) {
+
+                if (elements[i][n].classList.contains('fjs-hidden')) {
+
+                    elements[i][n].classList.remove('fjs-hidden');
+                }
+
+                mapper[elements[i][n].tagName.toLowerCase()](elements[i][n]);
             }
         }
     }
 
-    function _preventLoading() {
+    function _processPicture(element) {
 
-        var lazyElements = document.querySelectorAll('[data-lazy] img');
-        var i;
+        // Check or the element is visible?
+        if (_isVisible(element) || ignoreIsVisible) {
 
-        for (i = 0; i < lazyElements.length; i++) {
+            if (element.querySelectorAll('source:not([data-lazy-loaded="true"])').length) {
 
-            if (!_isVisible(lazyElements[i])) {
+                var i;
 
-                lazyElements[i].setAttribute('data-src', lazyElements[i].getAttribute('src'));
-                //lazyElements[i].setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-                lazyElements[i].setAttribute('src', 'img/transparent.gif');
+                for (i = 0; i < element.querySelectorAll('source').length; i++) {
+
+                    element.querySelectorAll('source')[i].setAttribute('srcset', element.querySelectorAll('source')[i].getAttribute('data-srcset'));
+                    element.querySelectorAll('source')[i].setAttribute('data-lazy-loaded', true);
+                }
+
+                if (element.querySelector('img:not([data-lazy-loaded="true"])')) {
+
+                    element.querySelector('img').setAttribute('src', element.querySelector('img').getAttribute('data-src'));
+                }
+
+                if (!initial) {
+
+                    element.className = 'fadein fadein-1s';
+                }
             }
         }
     }
 
-    function _onImageLoad(element) {
+    function _processVideo(element) {
 
-        element.className = 'fadein fadein-1s';
+        // Check or the element is visible?
+        if (_isVisible(element) || ignoreIsVisible) {
+
+            if (element.querySelectorAll('source:not([data-lazy-loaded="true"])').length) {
+
+                var i;
+
+                for (i = 0; i < element.querySelectorAll('source').length; i++) {
+
+                    var source = document.createElement('source');
+                    source.setAttribute('src', element.querySelectorAll('source')[i].getAttribute('data-src'));
+                    source.setAttribute('data-lazy-loaded', true);
+                    element.removeChild(element.querySelectorAll('source')[i]);
+                    element.appendChild(source);
+                    element.play();
+                }
+            }
+        }
+    }
+
+    function _processImg() {
+
+        console.log('_processImg');
+    }
+
+    function _processDiv(element) {
+
+        if (_isVisible(element) && !element.getAttribute('data-lazy-loaded')) {
+
+            reqwest({
+                url: element.getAttribute('data-src'),
+                method: 'get',
+                success: function(data) {
+
+                    element.innerHTML = data;
+                    element.setAttribute('data-lazy-loaded', true);
+                },
+                error: function(data) {
+
+                    element.innerHTML = '<p>Error: ' + data;
+                }
+            });
+        }
     }
 
     function _isVisible(element) {
@@ -66,7 +145,7 @@
             top += element.offsetTop;
         }
 
-        top -= 800;
+        //top -= 200;
 
         return (top < (window.pageYOffset + window.innerHeight) && (top + height) <= (window.pageYOffset + window.innerHeight));
     }

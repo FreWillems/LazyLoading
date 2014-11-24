@@ -7,7 +7,6 @@
         mapper = {
             picture: _processPicture,
             video: _processVideo,
-            img: _processImg,
             div: _processDiv
         };
 
@@ -15,12 +14,9 @@
 
         if (window.location.hash && window.location.hash.toLowerCase() === '#nolazy') {
 
-            console.log('Lazy is off! Loading everything..');
+            console.log('Lazy is off! Loading everything normal..');
             ignoreIsVisible = true;
         }
-
-        document.querySelector('#lazy-switch').classList.remove('red');
-        document.querySelector('#lazy-switch').innerHTML = 'Lazy is on!';
 
         _findElements();
 
@@ -110,11 +106,6 @@
         }
     }
 
-    function _processImg() {
-
-        console.log('_processImg');
-    }
-
     function _processDiv(element) {
 
         if (_isVisible(element) && !element.getAttribute('data-lazy-loaded')) {
@@ -145,7 +136,7 @@
             top += element.offsetTop;
         }
 
-        //top -= 200;
+        top -= 200;
 
         return (top < (window.pageYOffset + window.innerHeight) && (top + height) <= (window.pageYOffset + window.innerHeight));
     }

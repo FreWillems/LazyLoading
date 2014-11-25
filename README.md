@@ -7,7 +7,7 @@ A Proof of Concept
 
 Lazy.js will search for a specific data attribute (data-lazy="true") to turn on lazy.js for a wrapper. Everything inside the wrapper will be matched against the criteria you define in data-lazy-elements.
 
-**Example**
+**Example with picture and video element**
 ```html
 <!-- Lazy is on and will search for picture and video elements -->
 <div class="main" data-lazy="true" data-lazy-elements="picture,video">
@@ -24,3 +24,16 @@ Lazy.js will search for a specific data attribute (data-lazy="true") to turn on 
   </noscript>
 </div>
 ```
+
+**Example with ajax call**
+```html
+<div class="lazy-content" data-lazy="true" data-lazy-elements="div">
+  <h2>Lazy Load Content</h2>
+  <div id="lazy-content" data-src="list.html">
+    <a href="list.html">Klik hier</a>
+  </div>
+</div>
+```
+
+**Debugging**
+To turn of the script, just append #nolazy.
